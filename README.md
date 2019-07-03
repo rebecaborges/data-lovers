@@ -1,60 +1,36 @@
+![imagem pokemons](./src/accets/logo.png)
+
 # Data Lovers
 
+## Defini√ß√£o do produto
 
+Desenvolvemos um produto de busca tanto por ordena√ß√£o, filtragem ou m√©dia, para facilitar a vida do us√∫rio no jogo Pok√©mon GO.
 
-## DefiniÁ„o do produto
+## Considera√ß√µes t√©cnicas
 
-Desenvolvemos um produto de busca tanto por ordenaÁ„o, filtragem ou mÈdia, 
-para facilitar a vida do usu·rio no jogo PokÈmon GO.
+Trabalhamos com a manipula√ß√£o do DOM e templates e optamos por mostrar as informa√ß√µes na p√°gina atrav√©s de cards.
+Utilizamos filter, map e reduce para manipular arrays e realizar c√°llculos do dados.
+Implementamos eventos para dar interatividade a p√°gina.
+Utilizamos git para versionamento do c√≥gido.
+Utilizamos bibliotecas de gr√°ficos do Google Charts para melhor experi√™ncia visual.
 
+## Experi√™ncia de Usu√°rio (UX Design)
 
-## ConsideraÁıes tÈcnicas
-
-Trabalhamos com a manipulaÁ„o do DOM e templates 
-e optamos por mostrar as informaÁıes na p·gina atravÈs de cards.
-Utilizamos filter, map e reduce para manipular arrays e realizar c·lculos do dados.
-Implementamos eventos para dar interatividade a p·gina.
-Utilizamos git para versionamento do cÛgido.
-Utilizamos bibliotecas de gr·ficos do Google Charts para melhor experiÍncia visual.
-
-
-
-## ExperiÍncia de Usu·rio (UX Design)
-
-Nossos usu·rios ambos tinham pouco tempo para jogar, 
-viabilizamos esse projeto para que eles encontrassem seus pokÈmons favoritos, 
-facilitando a jogatina e trazendo esse usu·rio para o jogo diariamente.
+Nossos usu√°rios ambos tinham pouco tempo para jogar, viabilizamos esse projeto para que eles encontrassem seus pok√©mons favoritos,
+facilitando a jogatina e trazendo esse usu√°rio para o jogo diariamente.
 
 #### Personas:
 
-* Usu·ria: DÈbora
-Link: https://uploaddeimagens.com.br/imagens/persona-debora-png
+* Usu√°ria: D√©bora
+https://uploaddeimagens.com.br/imagens/persona-debora-png
 
-* Usu·rio: Pedro
-Link: https://uploaddeimagens.com.br/imagens/persona-pedro-png
+* Usu√°rio: Pedro
+https://uploaddeimagens.com.br/imagens/persona-pedro-png
 
-#### ProtÛtipo:
+#### Prot√≥tipo:
 
 * baixa fidelidade:
 https://uploaddeimagens.com.br/imagens/whatsapp_image_2019-03-13_at_03-27-38-jpeg
 
-* mÈdia fidelidade:
+* m√©dia fidelidade:
 https://marvelapp.com/439fgcd
-
-
-
-
- 
-
- 
-
-
-
- 
-
-
-
- 
-
- 
-
