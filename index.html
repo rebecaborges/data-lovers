@@ -9,7 +9,8 @@
   <body>
     <header class="top"> 
       <a href="index.html"><img class="top-img" src="src/accets/Pokemon-h1.png" alt="imagem escrito pokemon" href="index.html"></a>
-      <nav class="top-nav">
+    </header>
+    <nav class="top-nav">
 			  <select id="orderAz" class="select-nav">
 				  <option selected>Ordenar</option>
           <option>A a Z</option>
@@ -17,17 +18,16 @@
 			  </select>
 				<select id="eggKm" class="select-nav">
 					<option selected>Km/Ovos</option>
-          <option>Não Tem Ovos</option>
-					<option>2 KM</option>
-					<option>5 KM</option>
-					<option>10 KM</option>
+          <option value ="notEggs">Não Tem Ovos</option>
+					<option value ="egg2km">2 KM</option>
+					<option value ="egg5km">5 KM</option>
+					<option value ="egg10km">10 KM</option>
         </select>
         <select id="candy" class="select-nav">
           <option selected>Candy</option>
           <option>Media de candy</option>
         </select>
       </nav>
-    </header>
     <main>
       <section id="general-pokemon">
         <div id="show-pokemon" class="icon-pokemon" ></div>

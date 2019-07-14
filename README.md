@@ -1,6 +1,8 @@
-![imagem pokemons](./src/accets/logo.png)
+![imagem pokemons](./src/accets/pokemon-readme.jpg)
 
 # Data Lovers
+
+[![Build Status](https://img.shields.io/badge/acess-link-red.svg)](https://rebecaborges.github.io/data-lovers/)
 
 ## Definição do produto
 

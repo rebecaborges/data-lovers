@@ -1,0 +1,22 @@
+{
+  "name": "data-lovers",
+  "version": "1.0.0",
+  "description": "![imagem pokemons](./src/accets/logo.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rebecaborges/data-lovers.git"
+  },
+  "author": "Rebeca Borges",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rebecaborges/data-lovers/issues"
+  },
+  "homepage": "https://github.com/rebecaborges/data-lovers#readme",
+  "devDependencies": {
+    "eslint": "^6.0.1"
+  }
+}

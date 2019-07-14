@@ -1,117 +1,105 @@
-window.onload= function() {
+window.onload = function () {
   allPokemon();
+  eggKmSelect();
 };
 
-function getPokemon (){
-  return POKEMON['pokemon'];
+function getPokemon() {
+  return POKEMON["pokemon"];
+}
+
+const orderAzSelect = document.getElementById("orderAz");
+orderAzSelect.addEventListener("change", function () {
+  if (orderAzSelect.selectedIndex === 1) {
+    return showOrderAz();
+  } else if (orderAzSelect.selectedIndex === 2) {
+    return showOrderZa();
+  } else {
+    alert("Selecione uma opção!");
+  }
+});
+
+
+orderPokemonName = () =>  getPokemon().sort(function (a, b) {
+   return a.name.localeCompare(b.name)
+  });
+
+
+function showOrderAz() {
+  document.getElementById("show-pokemon").innerHTML = `
+  ${orderPokemonName().map((i) =>`
+  <div class='list-pokemon'>
+    <img src='${i.img}' class= 'pokemon-img'/>
+    <div class= text-name> 
+      <h3 class='pokemon-name'>${i.name}</h3>
+    </div>
+    <div class= text-name> 
+      <h3 class='pokemon-name'>${"Tipo: " + i.type}</h3>
+    </div>
+    <div class= text-name> 
+      <h3 class='pokemon-name'>${"Altura: " + i.height}</h3>
+    </div>
     
-};
+  </div>
+  `).join("")
+}`;
+}
 
-const orderAzSelect = document.getElementById('orderAz')
-orderAzSelect.addEventListener('change', function(){
-  if(orderAzSelect.selectedIndex === 1){
-    return orderAz();
-  }else if(orderAzSelect.selectedIndex === 2){
-    return orderZa ();
-  }else{ alert('Selecione uma opção!');
-  };
-});
-
-function orderAz (){
-  let showPokemon = document.getElementById('show-pokemon');
-  
-  let orderPokemonName = getPokemon().sort(function(a,b){
-    return a.name.localeCompare(b.name);
-  });
-
-  showPokemon.innerHTML=`
-  ${orderPokemonName.map((i) =>`
+function showOrderZa() {
+  document.getElementById("show-pokemon").innerHTML = `
+  ${orderPokemonName().reverse().map((i) =>`
   <div class='list-pokemon'>
     <img src='${i.img}' class= 'pokemon-img'/>
     <div class= text-name> 
       <h3 class='pokemon-name'>${i.name}</h3>
     </div>
   </div>
-  `).join('')
-  }`
-};
+  `).join("")
+}`;
 
-function orderZa (){
-  let showPokemon = document.getElementById('show-pokemon');
-  
-  let orderPokemonName = getPokemon().sort(function(a,b){
-    return a.name.localeCompare(b.name);
-  });
+}
 
-  showPokemon.innerHTML=`
-  ${orderPokemonName.reverse().map((i) =>`
-  <div class='list-pokemon'>
-    <img src='${i.img}' class= 'pokemon-img'/>
-    <div class= text-name> 
-      <h3 class='pokemon-name'>${i.name}</h3>
-    </div>
-  </div>
-  `).join('')
-  }`
-};
+function allPokemon() {
+  const showPokemon = document.getElementById("show-pokemon");
 
-const eggKmSelect = document.getElementById('eggKm')
-eggKmSelect.addEventListener('change', function(){
-   
-  if(eggKmSelect.selectedIndex === 1){
-    showNotInEggs();
-  }else if(eggKmSelect.selectedIndex === 2){
-    showKm2();
-  }else if(eggKmSelect.selectedIndex === 3){
-    showKm5();
-  }else if(eggKmSelect.selectedIndex === 4){
-    showKm10();
-  }else{ return alert('Selecione uma opção!');
-  };
-});
-
-function allPokemon (){
-  let showPokemon = document.getElementById('show-pokemon');
-
-  showPokemon.innerHTML= ` 
+  showPokemon.innerHTML = ` 
   ${getPokemon().map((monster) =>`
     <div class='list-pokemon'>
-      <img src='${monster['img']}' class= 'pokemon-img'/>
+      <img src='${monster["img"]}' class= 'pokemon-img'/>
       <div class= text-name> 
-        <h3 class='pokemon-name'>${monster['name']}</h3>
+        <h3 class='pokemon-name'>${monster["name"]}</h3>
       </div>
       <div class='text-type'>
-        <p class='pokemon-type'>${monster['num']}</p>
+        <p class='pokemon-type'>${monster["num"]}</p>
       </div>
     </div>
-    `).join('')
-  }`
-};
+    `).join("")
+}`;
+}
 
-function showNotInEggs (){
-  let showPokemon = document.getElementById('show-pokemon');
-  let eggFilter = getPokemon().filter((pokemon) => pokemon.egg ==='Not in Eggs');
+function eggKmSelect() {
+  const eggKmSelect = document.getElementById("eggKm");
+  eggKmSelect.addEventListener("change", function () {
+    if (eggKmSelect.selectedIndex === 1) {
+      showEggs(eggKmParam = "Not in Eggs");
+    } else if (eggKmSelect.selectedIndex === 2) {
+      showEggs(eggKmParam = "2 km");
+    } else if (eggKmSelect.selectedIndex === 3) {
+      showEggs(eggKmParam = "5 km");
+    } else if (eggKmSelect.selectedIndex === 4) {
+      showEggs(eggKmParam = "10 km");
+    } else {
+      return alert("Selecione uma opção!");
+    }
+  });
   
-  showPokemon.innerHTML=` 
-  ${eggFilter.map((eggFilter)  => `
-    <div class='list-pokemon'>
-      <img src='${eggFilter.img}' class= 'pokemon-img'/>
-      <div class= text-name> 
-        <h3 class='pokemon-name'>${eggFilter.name}</h3 >
-      </div>
-      <div class='text-type'>
-        <p class='pokemon-type'>${eggFilter.egg}</p>
-      </div>
-    </div>
-    `).join('')
-  }`
-};
+}
 
-function showKm2 (){
-  let showPokemon = document.getElementById('show-pokemon');
-  let eggFilter = getPokemon().filter((pokemon) => pokemon.egg ==='2 km');
+function showEggs(eggKmParam) {
+  const showPokemon = document.getElementById("show-pokemon");
+  const eggFilter = getPokemon().filter((pokemon) => pokemon.egg === eggKmParam);
   
-  showPokemon.innerHTML=` ${eggFilter.map((eggFilter)  => `
+  showPokemon.innerHTML = ` 
+  ${eggFilter.map((eggFilter) => `
     <div class='list-pokemon'>
       <img src='${eggFilter.img}' class= 'pokemon-img'/>
       <div class= text-name> 
@@ -121,102 +109,78 @@ function showKm2 (){
         <p class='pokemon-type'>${eggFilter.egg}</p>
       </div>
     </div>
-    `).join('')
-  }`
-};
-   
-function showKm5 (){
-  let showPokemon = document.getElementById('show-pokemon');
-  let eggFilter = getPokemon().filter((pokemon) => pokemon.egg === '5 km');
+    `).join("")
+}`;
+}
 
-  showPokemon.innerHTML=` ${eggFilter.map((eggFilter)  => `
-    <div class='list-pokemon'>
-      <img src='${eggFilter.img}' class= 'pokemon-img'/>
-      <div class= text-name> 
-        <h3 class='pokemon-name'>${eggFilter.name}</h3 >
-      </div>
-      <div class='text-type'>
-        <p class='pokemon-type'>${eggFilter.egg}</p>
-      </div>
-    </div>
-    `).join('')
-  }`
-};
 
-function showKm10 (){
-  let showPokemon = document.getElementById('show-pokemon');
-  let eggFilter = getPokemon().filter((pokemon) => pokemon.egg ==='10 km');
-  
-  showPokemon.innerHTML=` ${eggFilter.map((eggFilter)  => `
-    <div class='list-pokemon'>
-      <img src='${eggFilter.img}' class= 'pokemon-img'/>
-      <div class= text-name> 
-        <h3 class='pokemon-name'>${eggFilter.name}</h3 >
-      </div>
-      <div class='text-type'>
-        <p class='pokemon-type'>${eggFilter.egg}</p>
-      </div>
-    </div>
-    `).join('')
-  }`
-};
-   
-const candySelect = document.getElementById("candy");
-candySelect.addEventListener("change", function(){
-  if(candySelect.selectedIndex === 1){ 
-    google.charts.load("current", {"packages":["corechart"]});
+
+
+//grafico
+
+document.getElementById("candy").addEventListener("change", () => {
+  if (document.getElementById("candy").selectedIndex === 1) { 
+    google.charts.load("current", {"packages": ["corechart"]});
     google.charts.setOnLoadCallback(drawGraphic);
-  }else{alert("Selecione uma opção!")};
+  } else {
+    alert("Selecione uma opção!");
+  }
 });
+
 
 function drawGraphic() {
-  let candy = getPokemon().map(monster => monster.candy_count);
-  let candyFilter = candy.filter(i => typeof i ==="number");
-  let candyTotal = candyFilter.reduce((acc,cur) => acc+cur);
-  let result = candyTotal/candyFilter.length;
-  
-  let max = candyFilter.reduce(function(a,b){
-    return Math.max(a,b);
+  const candy = getPokemon().map(monster => monster.candy_count);
+  const candyFilter = candy.filter(i => typeof i === "number");
+  const candyTotal = candyFilter.reduce((acc, cur) => acc + cur);
+  const result = candyTotal / candyFilter.length;
+
+  const max = candyFilter.reduce(function (a, b) {
+    return Math.max(a, b);
   });
 
-  let min = candyFilter.reduce(function(a,b){
-    return Math.min(a,b);
+  const min = candyFilter.reduce(function (a, b) {
+    return Math.min(a, b);
   });
 
-  let data = google.visualization.arrayToDataTable([
-    ['média de candy', "quantidade"],
-    ['Média de candy por pokémon', result],
-    ['Máximo de candy por pokémon', max],
-    ['Mínimo de candy por pokémon', min],
+  const data = google.visualization.arrayToDataTable([
+    ["média de candy", "quantidade"],
+    ["Média de candy por pokémon", result],
+    ["Máximo de candy por pokémon", max],
+    ["Mínimo de candy por pokémon", min],
   ]);
 
-  let options = {
+  const options = {
     title: "Candy's",
     pieHole: 0.4,
+    'width':600,
+    'height':400,
   };
 
-  let chart = new google.visualization.PieChart(document.getElementById('graphic'));
+  const chart = new google.visualization.PieChart(document.getElementById("graphic"));
   chart.draw(data, options);
-};
+}
 
-let clearAz = document.getElementById("orderAz")
-let clearEgg  = document.getElementById("eggKm")
-let clearCandy = document.getElementById("candy")
+//limpa os outros selects
 
-clearAz.addEventListener("change", function(){
-  clearEgg.selectedIndex=0;
-  clearCandy.selectedIndex=0;
+const eggKm = document.getElementById("eggKm")
+const candy = document.getElementById("candy") 
+const order = document.getElementById("orderAz") 
+
+order.addEventListener("change", function(){
+  eggKm.selectedIndex=0;
+  candy.selectedIndex=0;
   document.getElementById('graphic').innerHTML="";
 });
 
-clearEgg.addEventListener("change", function(){
-  clearAz.selectedIndex=0;
-  clearCandy.selectedIndex=0;
-  document.getElementById('graphic').innerHTML="";
+
+eggKm.addEventListener("change", function () {
+  order.selectedIndex = 0;
+  candy.selectedIndex = 0;
+  document.getElementById("graphic").innerHTML = "";
 });
 
-clearCandy.addEventListener("change", function(){
-  clearAz.selectedIndex=0;
-  clearEgg.selectedIndex=0;
-  document.getElementById('show-pokemon').innerHTML="";
+candy.addEventListener("change", function () {
+  order.selectedIndex = 0;
+  eggKm.selectedIndex = 0;
+  document.getElementById("show-pokemon").innerHTML = "";
 });
