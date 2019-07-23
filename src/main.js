@@ -18,47 +18,49 @@ orderAzSelect.addEventListener("change", function () {
   }
 });
 
-
 orderPokemonName = () =>  getPokemon().sort(function (a, b) {
-   return a.name.localeCompare(b.name)
-  });
+    return a.name.localeCompare(b.name)
+});
 
-
-function showOrderAz() {
+showOrderAz = () => {
   document.getElementById("show-pokemon").innerHTML = `
   ${orderPokemonName().map((i) =>`
-  <div class='list-pokemon'>
-    <img src='${i.img}' class= 'pokemon-img'/>
-    <div class= text-name> 
-      <h3 class='pokemon-name'>${i.name}</h3>
+    <div class='list-pokemon'>
+      <img src='${i.img}' class= 'pokemon-img'/>
+      <div class= text-name> 
+        <h3 class='pokemon-name'>${i.name}</h3>
+        <li class='pokemon-name'>${"Tipo: " + i.type}</li>
+        <li class='pokemon-name'>${"Altura: " + i.height}</li>
+        <li class='pokemon-name'>${"Peso: " + i.weight}</li>
+        <li class='pokemon-name'>${"Spawn Chance: " + i.spawn_chance}</li>
+        <li class='pokemon-name'>${"Spawn Time: " + i.spawn_time}</li>
+        <li class='pokemon-name'>${"Número: " + i.num}</li>
+      </div>
     </div>
-    <div class= text-name> 
-      <h3 class='pokemon-name'>${"Tipo: " + i.type}</h3>
-    </div>
-    <div class= text-name> 
-      <h3 class='pokemon-name'>${"Altura: " + i.height}</h3>
-    </div>
-    
-  </div>
-  `).join("")
-}`;
+    `).join("")
+  }`;
 }
 
-function showOrderZa() {
+showOrderZa = () => {
   document.getElementById("show-pokemon").innerHTML = `
   ${orderPokemonName().reverse().map((i) =>`
-  <div class='list-pokemon'>
-    <img src='${i.img}' class= 'pokemon-img'/>
-    <div class= text-name> 
-      <h3 class='pokemon-name'>${i.name}</h3>
+    <div class='list-pokemon'>
+      <img src='${i.img}' class= 'pokemon-img'/>
+      <div class= text-name> 
+        <h3 class='pokemon-name'>${i.name}</h3>
+        <li class='pokemon-name'>${"Tipo: " + i.type}</li>
+        <li class='pokemon-name'>${"Altura: " + i.height}</li>
+        <li class='pokemon-name'>${"Peso: " + i.weight}</li>
+        <li class='pokemon-name'>${"Spawn Chance: " + i.spawn_chance}</li>
+        <li class='pokemon-name'>${"Spawn Time: " + i.spawn_time}</li>
+        <li class='pokemon-name'>${"Número: " + i.num}</li>
+      </div>
     </div>
-  </div>
-  `).join("")
-}`;
-
+    `).join("")
+  }`;
 }
 
-function allPokemon() {
+allPokemon = () => {
   const showPokemon = document.getElementById("show-pokemon");
 
   showPokemon.innerHTML = ` 
@@ -67,17 +69,15 @@ function allPokemon() {
       <img src='${monster["img"]}' class= 'pokemon-img'/>
       <div class= text-name> 
         <h3 class='pokemon-name'>${monster["name"]}</h3>
-      </div>
-      <div class='text-type'>
-        <p class='pokemon-type'>${monster["num"]}</p>
+        <li class='pokemon-name'>${monster["num"]}</li>
       </div>
     </div>
     `).join("")
-}`;
+  }`;
 }
 
-function eggKmSelect() {
-  const eggKmSelect = document.getElementById("eggKm");
+eggKmSelect = () => {
+  const eggKmSelect = document.getElementById("eggKm")
   eggKmSelect.addEventListener("change", function () {
     if (eggKmSelect.selectedIndex === 1) {
       showEggs(eggKmParam = "Not in Eggs");
@@ -91,10 +91,9 @@ function eggKmSelect() {
       return alert("Selecione uma opção!");
     }
   });
-  
 }
 
-function showEggs(eggKmParam) {
+showEggs = (eggKmParam) => {
   const showPokemon = document.getElementById("show-pokemon");
   const eggFilter = getPokemon().filter((pokemon) => pokemon.egg === eggKmParam);
   
@@ -110,13 +109,9 @@ function showEggs(eggKmParam) {
       </div>
     </div>
     `).join("")
-}`;
+  }`;
 }
 
-
-
-
-//grafico
 
 document.getElementById("candy").addEventListener("change", () => {
   if (document.getElementById("candy").selectedIndex === 1) { 
@@ -160,7 +155,6 @@ function drawGraphic() {
   chart.draw(data, options);
 }
 
-//limpa os outros selects
 
 const eggKm = document.getElementById("eggKm")
 const candy = document.getElementById("candy") 
@@ -171,7 +165,6 @@ order.addEventListener("change", function(){
   candy.selectedIndex=0;
   document.getElementById('graphic').innerHTML="";
 });
-
 
 eggKm.addEventListener("change", function () {
   order.selectedIndex = 0;

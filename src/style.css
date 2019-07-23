@@ -67,6 +67,11 @@ body{
 	border-radius: 10%;
 }
 
+.pokemon-name{
+  display: flex;
+  justify-content: center;
+}
+
 .pokemon-img{
   width: 50%;
 }
